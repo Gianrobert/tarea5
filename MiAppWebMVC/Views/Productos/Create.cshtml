@@ -1,0 +1,18 @@
+﻿@model MiAppWebMVC.Models.Producto
+
+<h2>Crear Producto</h2>
+<form asp-action="Create" method="post">
+    <div>
+        <label>Nombre:</label>
+        <input asp-for="Nombre" />
+    </div>
+    <div>
+        <label>Precio:</label>
+        <input asp-for="Precio" />
+    </div>
+    <div>
+        <label>Stock:</label>
+        <input asp-for="Cantidad" />
+    </div>
+    <button type="submit">Guardar</button>
+</form>

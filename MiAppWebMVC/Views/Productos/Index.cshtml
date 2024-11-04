@@ -1,0 +1,43 @@
+﻿@model List<MiAppWebMVC.Models.Producto>
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Lista de Productos</h2>
+
+    <div class="d-flex justify-content-end mb-3">
+        <a asp-action="Create" class="btn btn-success">Crear nuevo producto</a>
+    </div>
+
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var producto in Model)
+            {
+                <tr>
+                    <td>@producto.Nombre</td>
+                    <td>@String.Format("{0:C}", producto.Precio)</td>
+                    <td>@producto.Stock</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@producto.Id" class="btn btn-primary btn-sm">Editar</a>
+                        <form asp-action="Delete" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@producto.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            @if (!Model.Any())
+            {
+                <tr>
+                    <td colspan="4" class="text-center text-muted">No hay productos disponibles</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

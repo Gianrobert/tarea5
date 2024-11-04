@@ -1,0 +1,15 @@
+﻿@model MiAppWebMVC.Models.Producto
+
+<h2>Eliminar Producto</h2>
+<p>¿Estás seguro de que deseas eliminar este producto?</p>
+<div>
+    <p>Nombre: @Model.Nombre</p>
+    <p>Precio: @Model.Precio</p>
+    <p>Stock: @Model.Stock</p>
+</div>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit">Eliminar</button>
+    <a asp-action="Index">Cancelar</a>
+</form>
